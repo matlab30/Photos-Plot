@@ -1,21 +1,22 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-
 import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import os.path, time
-from PIL import Image
+import getpass
 import exifread
+from PIL import Image
+
 
 #Loop unitl input availabe
-while True:            
-    directory = input('Write the location of the Photos Folder please:')
-    if directory != "" :     
-        break
+#while True:            
+    #directory = input('Write the location of the Photos Folder please:')
+    #if directory != "" :     
+        #break
         
+Cuser = getpass.getuser()  
+directory = "C:\\Users\\"+Cuser+"\\Pictures"        
+       
 values = []
 #Recursive looking for files
 for root, directories, filenames in os.walk(directory):
@@ -64,13 +65,10 @@ lpatch = mpatches.Patch(color='r',label='New Camera')
 lpatch2 = mpatches.Patch(color='b',label='New Mobile')
 plt.legend(handles=[lpatch,lpatch2])
 
-#Custom colors for my collection
+#Custom colors
 for i in range(30,32):    
     patches[i].set_facecolor('b')
 for i in range(45, 47):
     patches[i].set_facecolor('r')
 
 plt.show()
-
-
-

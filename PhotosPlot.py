@@ -7,13 +7,6 @@ import getpass
 import exifread
 from PIL import Image
 
-
-#Loop unitl input availabe
-#while True:            
-    #directory = input('Write the location of the Photos Folder please:')
-    #if directory != "" :     
-        #break
-        
 Cuser = getpass.getuser()  
 directory = "C:\\Users\\"+Cuser+"\\Pictures"        
        
@@ -53,22 +46,19 @@ plt.figure(figsize=(18,10))
 plt.title('Photo per Year from My Photo Collection')
 plt.xlabel('Year Taken')
 plt.ylabel('Number of Photos')
-#plt.axis()
-plt.axis([1995, 2020, 0, 2000])
+plt.axis()
 
+#determine x axis values
+plt.xticks(np.arange(min(values), max(values)+1, 5.0))
+xrange = np.arange(min(values), max(values)+1)
+xrr = [xrange[0],xrange[-1]]
+if xrange[-1] > xrange[0]:
+    bins=(xrange[-1]-xrange[0])*2
+else:
+    bins=50
+    
 #Grid
 plt.grid(True,color='lightgrey')
-N, bins, patches = plt.hist(values,edgecolor='black',bins=50,align='left' , alpha=0.75,range=(1995,2020))
-
-#Legend
-lpatch = mpatches.Patch(color='r',label='New Camera')
-lpatch2 = mpatches.Patch(color='b',label='New Mobile')
-plt.legend(handles=[lpatch,lpatch2])
-
-#Custom colors
-for i in range(30,32):    
-    patches[i].set_facecolor('b')
-for i in range(45, 47):
-    patches[i].set_facecolor('r')
+N, bins, patches = plt.hist(values,edgecolor='black',bins=bins,align='left' , alpha=0.75,range=(xrr))
 
 plt.show()

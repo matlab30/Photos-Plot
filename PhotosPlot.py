@@ -49,8 +49,8 @@ plt.ylabel('Number of Photos')
 plt.axis()
 
 #determine x axis values
-plt.xticks(np.arange(min(values), max(values)+1, 5.0))
-xrange = np.arange(min(values), max(values)+1)
+plt.xticks(np.arange(min(values), max(values)+2, 5.0))
+xrange = np.arange(min(values), max(values)+2)
 xrr = [xrange[0],xrange[-1]]
 if xrange[-1] > xrange[0]:
     bins=(xrange[-1]-xrange[0])*2

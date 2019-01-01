@@ -8,7 +8,7 @@ import exifread
 from PIL import Image
 
 Cuser = getpass.getuser()  
-directory = "C:\\Users\\"+Cuser+"\\Pictures\\luma"        
+directory = "C:\\Users\\"+Cuser+"\\Pictures"        
        
 values = []
 #Recursive looking for files
